@@ -1,0 +1,37 @@
+<html>
+	<%= stylesheet_link_tag("application", "bootstrap.min") %>
+	<title>
+		Mail
+	</title>
+	<body>	
+		<div>
+			<table class="table table-hover table-condensed" id="t1" style="margin-top:70px; margin-left:50px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">
+				<tr>
+					<% id = params[:email_id] %>
+					<span> From: </span>
+					<%= Email.find_by_id(id).sender%>
+					<br>
+					<span> To: </span>
+					<%= Email.find_by_id(id).recipient%>
+					<br>
+					<span> Subject: </span>
+					<%= Email.find_by_id(id).subject%>
+				</tr>
+				<br>
+				<br>
+				<br>
+				<tr>
+					<div>
+					<%= Email.find_by_id(id).content%>
+					</div>
+				</tr>
+				<tr>
+					<br>
+					<br>
+					<%= button_to "Delete", {:controller => "mails", :action => "delete_mail", :id => id}%>	
+				</tr>
+			</table>
+		</div>
+			
+	</body>
+</html>

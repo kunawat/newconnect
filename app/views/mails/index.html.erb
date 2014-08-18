@@ -1,0 +1,5 @@
+<%= form_for(:user, :url => {:action => 'login_attempt'}) do |f| %>
+  <%= f.number_field(:user_id, :placeholder => "User id")%>
+  
+  <%= submit_tag("Show mails") %>
+<% end %>

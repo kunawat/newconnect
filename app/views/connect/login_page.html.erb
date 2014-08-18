@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag "bootstrap.min" %>
+
+    <!-- Custom styles for this template -->
+    <%= stylesheet_link_tag "signin" %>
+
+  </head>
+
+  <body>
+    <div class="row">
+    <div class="col-md-3 col-md-offset-3" style="margin-top:70px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">   
+      <%= form_for(:user, :url => {:action => "login_attempt"}) do |f|  %>
+       
+       <table align="center">
+         <tr align="center">
+          <td>
+              <h2 class="form-signin-heading">Sign in </h2>
+          </td>   
+         </tr>
+         <tr align="center">
+           <td>
+              <div class="line"> </div>
+           </td>
+        </tr>
+        <tr align="center">
+            <td>
+              <span class="error" align="center" ><%= flash[:msg]  %></span>
+            </td>
+        </tr>
+        <tr>
+          <td>
+            <br>
+          </td>
+        </tr>
+ 
+        <tr align="center">
+          <td>
+              <%= f.text_field(:username,  :size =>25, :maxlength=> 25, :placeholder => "Username", :class => 'form-control')%>
+          </td>
+        </tr>
+        <tr>
+        <td>
+          <br>
+        </td>
+        </tr>
+        <tr align="center">
+          <td>
+              <%= f.password_field(:password, :size => 25, :maxlength=>25, :placeholder => "Password", :class => 'form-control' )%>
+          </td>
+        </tr>
+        <tr>
+        <td>
+          <br>
+        </td></tr>
+        <tr align="left">
+          <td>
+          <div >
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+          </td> 
+        </tr>
+        <tr align="center">
+          <td>
+            <br>
+          </td>
+        </tr>
+        <tr align="center">
+          <td>
+          <%= submit_tag("Login", :class => 'btn btn-lg btn-success btn-block', controller: "connect", action: "login_attempt")%>
+             <% end %>
+          </td>
+        </tr>
+       </table>
+        
+
+
+    </div> <!-- /container -->
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

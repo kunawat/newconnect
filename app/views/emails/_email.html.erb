@@ -1,0 +1,25 @@
+<% if(email.recieved_status == 'Unread') %>
+<tr>
+	<td>
+		<b><%= email.sender %></b>
+	</td>
+	<td>
+		<b><%= email.subject %></b>
+	</td>
+	<td>
+		<b><%= email.content %></b>
+	</td>	
+</tr>
+<% else %>
+<tr>
+	<td>
+		<%= email.sender %>
+	</td>
+	<td>
+		<%= email.subject %>
+	</td>
+	<td>
+		<%= email.content %>
+	</td>	
+</tr>
+<% end %>

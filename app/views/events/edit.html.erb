@@ -1,0 +1,13 @@
+	
+
+<%#= link_to" Back to Calendar", {controller: "calendar", action: "show", :class => 'back-link'}, class: "btn btn-primary" %>
+<%= @page_title= "Edit Event" %>
+<div >
+	<h2>Add Event</h2>
+	<%= form_for(:event, :url => {:action => 'update', :id => @event.id}) do |f|%>
+	<%= render(:partial => "form", :locals=> {:f=>f})%>
+	<div class="form-buttons">
+		<%= submit_tag("Update Event")%>
+	</div>
+	<% end %>
+</div>		

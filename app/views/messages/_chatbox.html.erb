@@ -1,0 +1,33 @@
+<% title "Chat" %>
+	<div style="padding-top: 5px;">
+   <button type="button" onclick="chat.ok()" class="pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+   <p style=""><%= @receiver.first_name %></p>
+   </div>
+  <ul id="chat" style="overflow-y: scroll;">
+  
+  	<% if not @messages.nil? %>
+    <%= render @messages %>
+    <% end -%>
+  </ul>
+
+  <%= form_for Message.new, :remote => true do |f| %>
+    <%= f.text_field :content %>
+    <%= hidden_field_tag "receiver_id", @receiver.id %>
+    <%= f.submit "Send" %>
+  <% end %>
+<script type="text/javascript">function chatObj(){ 
+    // this.render = function(){ 
+    //   var chatbox = document.getElementById('chatbox'); 
+    //   chatbox.style.right = "0px"; 
+    //   chatbox.style.bottom = "10px"; 
+    //   chatbox.style.display = "block"; 
+    //   // put dynamic stuff in the box here using innerHTML property if needed 
+    //   // Usually an Ajax request to get the specific chat brough into the window  
+    // } 
+    this.ok = function(){ 
+      document.getElementById('chatbox').style.display = "none"; 
+      document.getElementById('chatbox').style.display = "none"; 
+    } 
+  } 
+  var chat = new chatObj();
+</script>

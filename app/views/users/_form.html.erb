@@ -1,0 +1,46 @@
+<table>
+		<tr>
+			<th>Name:</th>
+			<td><%= f.text_field(:first_name)%></td>
+			<td><%= f.text_field(:last_name)%></td>
+		</tr>
+		<tr>
+			<th><%=f.label(:linked_in, "LinkedIn:")%></th>
+			<td> <%=f.text_field(:linked_in) %></td>
+		</tr>
+		<tr>
+			<th><%=f.label(:date_of_birth, "Date of Birth:")%></th>
+			<td>  <%= f.date_select(:date_of_birth, :order => [:month, :day, :year], :prompt =>true, :start_year => 1930, :end_year =>Time.now.year, :class => 'form-control')%></td>
+		</tr>
+		 <tr >
+                <td>
+        
+                    <b>
+                        Gender:
+                        </b>
+                 
+                        Male 
+                       <%= f.radio_button(:gender, :class => 'form-control', :value => "Male") %>
+                  
+                        Female <%= f.radio_button(:gender, :class => 'form-control', :value => "Female")%>
+              
+                    <br>
+                    <br>
+                </td>
+            </tr>  
+		<tr>
+			<th><%=f.label(:about_me)%></th>
+			<td><%= f.text_area(:about_me,:size=>"40*5")%></td>
+		</tr>
+		<tr>
+			<th><%=f.label(:contact_no, "Contact No:")%></th>
+			<td> <%=f.text_field(:contact_no) %></td>
+		</tr>
+		<tr>
+			<th><%=f.label(:email, "Email Id:")%></th>
+			<td> <%=f.text_field(:email) %></td>
+		</tr>
+		
+		
+		
+</table>

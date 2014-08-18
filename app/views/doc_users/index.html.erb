@@ -1,0 +1,27 @@
+<h1>Docs List</h1>
+
+<table align="center" width="100%">
+  <tr>
+    <td > 
+      Name
+    </td>
+    <td > 
+      Email
+    </td>
+  </tr>
+
+
+<% @doc_users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_doc_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Doc user', new_doc_user_path %>

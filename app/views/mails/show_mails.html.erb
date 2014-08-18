@@ -1,0 +1,43 @@
+<html>
+	<%= stylesheet_link_tag("application", "bootstrap.min") %>
+	<title>
+		Mails
+	</title>
+	<body>	
+		<div>
+			<%= link_to "", { :remote => true, :type => 'inbox' }, :id => 'refresh' %>
+			<table class="table table-hover table-condensed" id="t1" >
+				<tr>
+					<%= button_to "Compose", :action => 'compose' %>
+				</tr>
+			</table>
+		</div>
+
+
+	<br>
+		<h1 style="margin-left:5px"> Mails </h1>
+		<br>
+		<div>
+			<%= button_to( "Inbox", :action => 'show_mails', :type => 'inbox', :remote => true) %>
+			<%= button_to( "Sent", :action => 'show_mails', :type => 'sent', :remote => true) %>
+			<div id="mails_c">
+				<table class='table table-hover table-condensed' style='margin-left:5px'>
+					<tbody>
+						<%= render(@mails) %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	<script type='text/javascript'>
+		$(document).ready(function() {
+		  setInterval(function() {
+		  				$('#refresh').click();
+					  }, 2000);
+		});
+	</script>
+	</body>
+</html>    
+
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Make a poll</title>
+
+    <!-- Bootstrap core CSS -->
+ 
+
+    <!-- Custom styles for this template -->
+  
+
+  </head>
+
+  <body>
+
+
+      <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      <%= form_for(:poll, :url => {:action => "poll_new"}) do |f|  %>
+       
+        <h2 class="form-signin-heading">Create Poll </h2>
+        <div class="line"> </div>
+        <%= f.text_field(:question, :placeholder => "Question", :class => 'form-control')%>
+        <br>
+        <%= f.date_select(:end_date, :order => [:month, :day, :year], :prompt =>true, :start_year => 2014, :end_year =>2050, :class => 'form-control') %>
+        <h2 class = "form-signin-heading"> Specify Options </h2>
+        <div class ="line"></div>
+        <%= f.text_field(:option1, :placeholder => "Option 1", :class => 'form-control' )%>
+         <br>
+        <%= f.text_field(:option2, :placeholder => "Option 2", :class => 'form-control' )%>
+         <br>
+        
+       
+        <div class="row add_para_class" id="add_para0"></div>
+        <input name="para_count_btn" id="para_count_btn" type="hidden"/>
+        <input name="add_para_btn" id="add_para_btn" class="btn btn-primary btn-lg" type="button" value="Add Option" />
+        
+        <br>
+        <%= submit_tag("Submit Poll", :class => 'btn btn-primary btn-block') %>
+      <% end %>
+      </div>
+      </div>
+
+
+<!--AAAAAAAAAA-->
+
+    <script>
+  var para_count=0;
+  var ques_count_array=[];
+  $(document).ready(function() {
+    $("#add_para_btn").click(function(){
+      
+      //add paragraph
+      var myPara = $(
+        '<div id="add_para'+(para_count+1)+'">'+
+          
+          
+          //textfield
+          '<textarea name="option'+(para_count+3)+'" class="form-control" id="option'+(para_count+3)+'" placeholder="option'+(para_count+3)+'">'+
+            '</textarea>'+
+
+          //cancel btn
+          '<input id="cancel_btn'+(para_count+1)+'" class="btn btn-danger btn-lg" type="button" onclick="cancel(this);" value="Cancel" />'+
+        '</div>');
+      para_count++;
+      document.getElementById('para_count_btn').value = para_count;
+      //document.getElementById('ques_count_array_btn').value = ques_count_array;
+      //$('#ques_count_array_btn').val(JSON.stringify(ques_count_array));
+      (myPara).appendTo('.add_para_class');
+    })
+  });
+  function cancel(el){
+    var thisId = $(el).attr("id");
+    $("#add_para"+thisId.substring(10)).remove(); 
+  }
+   
+  </script>
+  <!--AAAAAAAAAA-->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>

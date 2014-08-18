@@ -1,0 +1,13 @@
+
+<%= link_to("Profile", action: "show",:id => @user.id, :class => 'back-link')%>
+<%= @page_title= "Edit Info" %>
+<div >
+	<h2>Edit Info</h2>
+	<%= form_for(:user, url: "/users/update/#{@user.id}") do |f|%>
+	<%= render(:partial => "form", :locals=> {:f=>f})%>
+	
+	<div class="form-buttons">
+		<%= submit_tag("Save")%>
+	</div>
+	<% end %>
+</div>

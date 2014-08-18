@@ -1,0 +1,11 @@
+<h1>Editing doc_user</h1>
+
+<%= form_for(:doc_user, :url => {:action => 'update', :id => @doc_user.id}) do |f|%>
+	<%= render(:partial => "form", :locals=> {:f=>f})%>
+	<div class="form-buttons">
+		<%= submit_tag("Submit")%>
+	</div>
+	<%end%>
+
+<%= link_to 'Show', @doc_user %> |
+<%= link_to 'Back', doc_users_path %>

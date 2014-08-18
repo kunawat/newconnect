@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <title>Signin</title>
+
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag "bootstrap.min" %>
+
+    <!-- Custom styles for this template -->
+    <%= stylesheet_link_tag "signin" %>
+
+  </head>
+
+  <body>
+
+
+    <div class="container form-signin" style="margin-top:70px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">   
+      <%= form_for(:user, :url => {:action => "create_new_user"}) do |f|  %>
+        <table>
+            <tr align="center">
+            <td>
+                <h2 class="form-signin-heading">Sign in </h2>
+            </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <div class="line"> </div>        
+                </td>
+            </tr>
+            <tr align="center">
+               <td>
+                    <span class="error" align="center" ><%= flash[:msg]  %></span>
+                    <br>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                <%= f.text_field(:username, :size =>25, :maxlength=> 25, :placeholder => "Username", :class => 'form-control')%>
+                <br>
+                </td>
+            </tr>            
+            <tr align="center">
+                <td>
+                    <%= f.text_field(:first_name, :size =>25, :maxlength=> 25, :placeholder => "First Name", :class => 'form-control')%>        
+                    <br>
+                </td>
+            </tr>            
+            <tr align="center">
+                <td>
+                     <%= f.text_field(:last_name, :size =>25, :maxlength=> 25, :placeholder => "Last Name", :class => 'form-control')%>
+                     <br>
+                </td>
+            </tr>            
+            <tr align="center">
+                <td>
+                    <%= f.password_field(:password, :size =>255, :maxlength=> 25, :placeholder => "Password", :class => 'form-control')%>
+                    <br>
+                </td>
+            </tr>            
+            <tr align="center">
+                <td>
+                    <%= f.text_field(:linked_in, :size =>25, :maxlength=> 25, :placeholder => "Linked In", :class => 'form-control')%>
+                    <br>
+                </td>
+            </tr>            
+            <tr align="left">
+                <td>
+                    <%= f.date_select(:date_of_birth, :order => [:month, :day, :year], :prompt =>true, :start_year => 1930, :end_year =>Time.now.year, :class => 'form-control')%>
+                    <br>
+                    <br>
+                </td>
+            </tr>            
+            <tr align="left">
+                <td>
+                    <span>
+                    <b>
+                        Gender:
+                        </b>
+                    </span>
+                    <span style="margin-left:20px;">
+                        Male 
+                        <%= f.radio_button(:gender, "Male", :checked => true) %>
+                    </span>
+                    <span style="margin-left:20px;">
+                        Female <%= f.radio_button(:gender, :class => 'form-control', :value => "Female")%>
+                    </span>
+                    <br>
+                    <br>
+                </td>
+            </tr>            
+            <tr align="center">
+                <td>
+                    <%= f.text_area(:about_me, :size =>25, :maxlength=> 25, :placeholder => "About me", :class => 'form-control')%>
+                </td>
+                <br>
+            </tr>
+            <tr align="center">
+                <td>
+                     <%= f.text_field(:contact_no, :size =>25, :maxlength=> 25, :placeholder => "Contact Number", :class => 'form-control')%>
+                     <br>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                 <%= f.text_field(:email, :size =>25, :maxlength=> 25, :placeholder => "Email", :class => 'form-control')%>
+                    <br>
+                </td>
+            </tr>
+            <tr align="left">
+                <td>
+                    <div class="checkbox">
+                        <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                        <br>
+                    </div>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <%= submit_tag("Create Account", :class => 'btn btn-lg btn-success btn-block') %>
+                    <br>
+                </td>
+            </tr>
+            
+        </table>
+        
+        
+      <% end %>
+
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
+
+

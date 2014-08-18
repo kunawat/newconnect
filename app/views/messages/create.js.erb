@@ -1,0 +1,13 @@
+
+<% broadcast "/messages/new/#{@message.receiver_id}" do %>
+
+  $("#chat").append("<%= escape_javascript render(@message) %>");
+  $("#chat").scrollTop($("#chat")[0].scrollHeight);
+<% end %>
+<% broadcast "/messages/new/#{@user.id}" do %>
+  $("#chat").append("<%= escape_javascript render(@message) %>");
+  $("#chat").scrollTop($("#chat")[0].scrollHeight);
+<% end %>
+<% notify "/notifications/#{@message.receiver_id}" %>
+
+$("#new_message")[0].reset();
