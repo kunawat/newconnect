@@ -5,7 +5,7 @@
 	</title>
 	<body>	
 		<div>
-			<%= link_to "", { :remote => true, :type => 'inbox' }, :id => 'refresh' %>
+			<%= link_to "", { :remote => true, :type => session[:mails_type] }, :id => 'refresh' %>
 			<table class="table table-hover table-condensed" id="t1" >
 				<tr>
 					<%= button_to "Compose", :action => 'compose' %>

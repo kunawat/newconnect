@@ -11,6 +11,8 @@ class SignupController < ApplicationController
   				@new_user = User.new(hash)
           if(@new_user.save)
           session[:user_id] = @new_user.id
+          @new_user.online = true
+          @new_user.save
   				redirect_to(:controller => "home", :action => 'home_page')
           else
             flash[:msg] = "Username or emailId  already taken"

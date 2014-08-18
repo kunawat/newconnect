@@ -5,18 +5,26 @@ class MailsController < ApplicationController
 
 	def show_mails
 		if (params[:type] == 'inbox')
-			@mails = Email.where(reciever_id: session[:user_id]).where("recieved_status != ?", 'deleted')
+			session[:mails_type] = 'inbox'
+			@mails = Email.where(reciever_id: session[:user_id]).where("recieved_status != ?", 'deleted').order("id DESC")
 		else
-			@mails = Email.where(sender_id: session[:user_id]).where("sent_status != ?", 'deleted')
+			session[:mails_type] = 'sent'
+			@mails = Email.where(sender_id: session[:user_id]).where("sent_status != ?", 'deleted').order("id DESC")
 		end
 	end
 
 	def new_mail
 		hash = params[:mail]
+		user = User.find_by_username(hash[:to])
+		if(user == nil)
+			render :text => "This user does not exist. Please insert a valid username"
+			return
+		else	
 		Email.create(:sender => User.find_by_id(session[:user_id]).username, :recipient => hash[:to], :subject => hash[:subject],
 					 :content => hash[:content], :recieved_status => "Unread", :sent_status => 'sent', :sender_id => session[:user_id],
 					 :reciever_id => User.find_by_username(hash[:to]).id)
 		redirect_to :action => 'show_mails', :type => 'inbox'
+		end
 	end
 
 	def delete_mail

@@ -39,6 +39,7 @@ module Connectlls
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    I18n.config.enforce_available_locales = true
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 

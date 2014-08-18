@@ -1,7 +1,12 @@
-<% if(email.recieved_status == 'Unread') %>
+<% if(email.recieved_status == 'Unread' && session[:mails_type] != 'sent') %>
 <tr>
 	<td>
-		<b><%= email.sender %></b>
+		<b><% if(session[:mails_type] == 'inbox') %>
+			<%= email.sender %>
+			<% else %>
+			<%= email.recipient %>
+			<% end %>
+			</b>
 	</td>
 	<td>
 		<b><%= email.subject %></b>
@@ -9,17 +14,28 @@
 	<td>
 		<b><%= email.content %></b>
 	</td>	
+	<td>
+	    <b><%= link_to "See Mail", {:controller => "mails", :action => "show_content", :email_id => email.id} %></b>
+	</td>
 </tr>
 <% else %>
 <tr>
-	<td>
-		<%= email.sender %>
+<td>
+		<% if(session[:mails_type] == 'inbox') %>
+			<%= email.sender %>
+			<% else %>
+			<%= email.recipient %>
+			<% end %>
+			
 	</td>
 	<td>
 		<%= email.subject %>
 	</td>
 	<td>
 		<%= email.content %>
+	</td>
+	<td>
+	    <%= link_to "See Mail", {:controller => "mails", :action => "show_content", :email_id => email.id} %>
 	</td>	
 </tr>
 <% end %>

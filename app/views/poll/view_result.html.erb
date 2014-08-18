@@ -12,6 +12,7 @@
 			        </tr>
 		    	</thead>
 				<% alloptions.each do |item| %>
+				<% if(item.keyword != "") %>
 					<tbody>
 						<tr>
 							<td>
@@ -21,8 +22,9 @@
 					            <%= item.votes %>
 					            <br> 
 						 	 </td>
-						</tr>
+						</tr>	
 					</tbody>
+				<% end %>	
 				<% end %>
 				<tfoot>
 				 

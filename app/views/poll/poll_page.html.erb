@@ -29,15 +29,15 @@
         <%= f.text_field(:option1, :placeholder => "Option 1", :class => 'form-control' )%>
          <br>
         <%= f.text_field(:option2, :placeholder => "Option 2", :class => 'form-control' )%>
-         <br>
-        
-       
-        <div class="row add_para_class" id="add_para0"></div>
-        <input name="para_count_btn" id="para_count_btn" type="hidden"/>
-        <input name="add_para_btn" id="add_para_btn" class="btn btn-primary btn-lg" type="button" value="Add Option" />
-        
+         <br> 
+         <%= f.text_field(:option3, :placeholder => "Option 3", :class => 'form-control' )%>
         <br>
-        <%= submit_tag("Submit Poll", :class => 'btn btn-primary btn-block') %>
+         <%= f.text_field(:option4, :placeholder => "Option 4", :class => 'form-control' )%>
+        <br>
+         <%= f.text_field(:option5, :placeholder => "Option 5", :class => 'form-control' )%>
+        <br>
+        <br>
+        <%= submit_tag("Submit Poll", :class => 'btn btn-lg btn-success btn-block') %>
       <% end %>
       </div>
       </div>
@@ -45,37 +45,6 @@
 
 <!--AAAAAAAAAA-->
 
-    <script>
-  var para_count=0;
-  var ques_count_array=[];
-  $(document).ready(function() {
-    $("#add_para_btn").click(function(){
-      
-      //add paragraph
-      var myPara = $(
-        '<div id="add_para'+(para_count+1)+'">'+
-          
-          
-          //textfield
-          '<textarea name="option'+(para_count+3)+'" class="form-control" id="option'+(para_count+3)+'" placeholder="option'+(para_count+3)+'">'+
-            '</textarea>'+
-
-          //cancel btn
-          '<input id="cancel_btn'+(para_count+1)+'" class="btn btn-danger btn-lg" type="button" onclick="cancel(this);" value="Cancel" />'+
-        '</div>');
-      para_count++;
-      document.getElementById('para_count_btn').value = para_count;
-      //document.getElementById('ques_count_array_btn').value = ques_count_array;
-      //$('#ques_count_array_btn').val(JSON.stringify(ques_count_array));
-      (myPara).appendTo('.add_para_class');
-    })
-  });
-  function cancel(el){
-    var thisId = $(el).attr("id");
-    $("#add_para"+thisId.substring(10)).remove(); 
-  }
-   
-  </script>
   <!--AAAAAAAAAA-->
 
     <!-- Bootstrap core JavaScript

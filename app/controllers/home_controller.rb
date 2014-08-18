@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 before_filter :check
  	
 def sign_out
+		user = User.find_by_id(session[:user_id])
+		user.online = false
+		user.save
 		session[:user_id] = nil
 		redirect_to(:controller => "connect", :action => 'login_page')		
 end

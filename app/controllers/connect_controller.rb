@@ -1,5 +1,4 @@
 class ConnectController < ApplicationController
-	
 
 	def logout
 		session[:user_id]=nil;	
@@ -28,6 +27,8 @@ class ConnectController < ApplicationController
 					redirect_to(:controller => "signup", :action => 'signup_page')
 				
 				else
+					user.online = true
+					user.save
 				    redirect_to(:controller => "home", :action => 'home_page')
 				end
 

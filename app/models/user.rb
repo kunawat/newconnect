@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :username, :password, :gender, :linked_in, :date_of_birth, :about_me, :contact_no, :email
+  attr_accessible :first_name, :last_name, :username, :password, :gender, :online, :linked_in, :date_of_birth, :about_me, :contact_no, :email
 	attr_accessor :password
 
-	validates :first_name, :last_name, :password, :username, :presence => true
+	validates :first_name, :last_name, :username, :presence => true
 	validates :username, :email,  :uniqueness => true
 
 	before_save :create_hashed_password

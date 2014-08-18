@@ -1,6 +1,4 @@
 <br>
-<% if session[:vote] == true %>
-
 		<br>
 			<% poll = Poll.find_by_id(session[:poll_id]) %>
 				<% alloption = poll.poll_options %>
@@ -15,6 +13,7 @@
 				    	</thead>
 		
 						<% alloption.each do |item| %>
+						<% if(item.keyword != "") %>
 							<tbody>
 								<tr>
 									<td>
@@ -26,13 +25,11 @@
 								 	</td>
 								</tr>
 							</tbody>
+							<% end %>
 						<% end %>
 						<tfoot>
 						 
 						</tfoot>
 					</table>
 				</div>
-<% else %>
-	<%= "Go back you fool, you already voted" %>
-	<%= link_to "Back", {:action => "view_polls"} %>
-<% end %>				
+				

@@ -54,7 +54,7 @@
                 <%= link_to("Home", :controller => 'home', :action => 'home_page') %>
               </li>
               <li>
-                 <%= link_to raw("Mail "), :controller => 'mails', :action => 'show_mails' %>
+                 <%= link_to raw("Mail "), :controller => 'mails', :action => 'show_mails', :type => 'inbox' %>
               </li>
                 <li class="dropdown">
                 <%= link_to(raw("#{User.find_by_id(session[:user_id]).first_name}" +("<b class= 'caret'></b>")), "#", :class => "dropdown-toggle", :data => {:toggle=>"dropdown"}) %>
@@ -78,42 +78,62 @@
         </div>
       </div>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <!------------------- SIDEBAR -------------->
     <div id="hihi"></div>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
          
           <% if session[:user_id] != nil %>
           <ul class="nav nav-sidebar">
               <li>
-                <%= link_to "Add Doc", {:controller => "doc_users", :action => "index"} , class: "btn btn-primary" %>
+                <%= link_to "Add Doc", {:controller => "doc_users", :action => "index"} %>
              </li>
              <li>
-                <%= link_to "Create a Poll", {:controller => "poll", :action => "poll_page"} , class: "btn btn-primary" %>
+                <%= link_to "Create a Poll", {:controller => "poll", :action => "poll_page"}%>
              </li>
              <li>
-                <%= link_to "View all Polls", {:controller => "poll", :action => "view_polls"}, class: "btn btn-primary"  %>
+                <%= link_to "View all Polls", {:controller => "poll", :action => "view_polls"} %>
              </li>
              <li>
     <%#= button_to "Calendar", controller: "calendar", action: "show" %>
-             <%= link_to "Calendar", calendar_path, class: "btn btn-primary" %></li>
-             <li>
-                <%= link_to "MailBox", {:controller => "mails", :action => "show_mails"}, :onclick => "loadMailPage();", class: "btn btn-primary"  %>
-                <small class="badge pull-right bg-yellow">
+             <%= link_to "Calendar", calendar_path %>
+             <small class="cust pull-right">
                 <% @emails = Email.where(recipient: User.find_by_id(session[:user_id]).username).where(recieved_status: 'Unread')%>
-                <%= @emails.size %>
+                <b><%= @emails.size %></b>
                 </small>
+              </li>
+             <li>
+                <%= link_to "MailBox", {:controller => "mails", :action => "show_mails", :type => 'inbox'}, :onclick => "loadMailPage();" %>
              </li>
              <li>
-                  <%= "Chat" %>
+                <br>
+                <br>
+                <br>
+                 <span style="margin-left:15px;">
+                  <b><%="Chats" %></b>
+                  </span>
                  <% @users = User.all %>
                  <% @users.each do |user| %>
-             
-                 <li><%= link_to user.first_name, messages_path(id: user.id), remote: true %></li>
-         
+                 <% if(user.online) %>
+                 <li> 
+                 <span style="margin-left:15px;">
+                 <b><%= link_to user.first_name, messages_path(id: user.id), remote: true %></b> 
+                 </li>
+                 </span>
+                 <% else %>
+                 <li>
+                 <span style="margin-left:15px;">
+                 <%= link_to user.first_name, messages_path(id: user.id), remote: true %></li> 
+                 </span>
                  <% end %>
+                 <br>
+                 <% end %>
+                 </span>
                <div id="chatbox" style="display: none; position: fixed; background: #fff; width:255px; height: 290px; z-index: 10; bottom: 50px; right: 0px;"></div>
              </li>
           </ul>

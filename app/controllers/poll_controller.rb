@@ -27,24 +27,28 @@ class PollController < ApplicationController
 		poll_id = params[:poll_id]
 		session[:poll_id] = poll_id
 		user_id = params[:user_id]
-		poll = Poll.find_by_id(poll_id)
-		polluser = poll.poll_users.find_by_user_id(user_id)
-		if polluser.nil?
-			session[:vote] = true;
-			PollUser.create(:user_id => user_id, :poll_id => poll_id)
-		else
-			session[:vote] = false;
-		end	
+		
 	end
 
 	def vote_now
 		user_id = session[:user_id]
 		poll_id = params[:poll_id]
-		optionid = params[:option_id]
-		option = Poll.find_by_id(poll_id).poll_options.find_by_id(optionid)
-		option.votes = option.votes + 1
-		option.save
-		redirect_to(:action => "view_polls")
+		poll = Poll.find_by_id(poll_id)
+		polluser = poll.poll_users.find_by_user_id(user_id)
+		if polluser.nil?
+			session[:vote] = true;
+			PollUser.create(:user_id => user_id, :poll_id => poll_id)
+			optionid = params[:option_id]
+			option = Poll.find_by_id(poll_id).poll_options.find_by_id(optionid)
+			option.votes = option.votes + 1
+			option.save
+			redirect_to(:action => "view_polls")
+		else
+			session[:vote] = false;
+			render :text => "Error : You already voted. Go Back to return to polls"
+			return
+		end		
+		
 	end
 
 	def view_polls
