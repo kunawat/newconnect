@@ -1,0 +1,1 @@
+web: bundle exec rackup faye.ru -s thin -e $RACK_ENV -p $PORT
