@@ -1,21 +1,22 @@
-<% title "Chat" %>
+<div id="chatbox_<%=@receiver.id%>" style="float:right; background:#222; width:255px; height: 290px;  bottom: 40px;">
 	<div style="padding-top: 5px;">
-   <button type="button" onclick="chat.ok()" class="pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
-   <p style=""><%= @receiver.first_name %></p>
+   <button type="button" onclick="chat.ok('<%=@receiver.id%>')" class="pull-right"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+   <p style="color:white; padding-left:15px;"><b><%= @receiver.first_name %></b></p>
    </div>
-  <ul id="chat" style="overflow-y: scroll;">
-  
+  <ul id="chat_<%=@receiver.id%>" style="overflow-y: scroll;background:white;" class="chat_content">
   	<% if not @messages.nil? %>
     <%= render @messages %>
     <% end -%>
   </ul>
 
   <%= form_for Message.new, :remote => true do |f| %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content,:id => "new_message_#{@receiver.id}", :class=>"message_content"%>
     <%= hidden_field_tag "receiver_id", @receiver.id %>
     <%= f.submit "Send" %>
   <% end %>
-<script type="text/javascript">function chatObj(){ 
+</div>
+<script type="text/javascript">
+  function chatObj(){ 
     // this.render = function(){ 
     //   var chatbox = document.getElementById('chatbox'); 
     //   chatbox.style.right = "0px"; 
@@ -24,9 +25,15 @@
     //   // put dynamic stuff in the box here using innerHTML property if needed 
     //   // Usually an Ajax request to get the specific chat brough into the window  
     // } 
-    this.ok = function(){ 
-      document.getElementById('chatbox').style.display = "none"; 
-      document.getElementById('chatbox').style.display = "none"; 
+    this.ok = function(rec_id){ 
+      console.log(rec_id)
+      document.getElementById('chat_tp_' + rec_id).remove(); 
+      var x= $("#chats_wrapper").children().length;
+
+        
+            x=x*260;
+       
+        $("#chats_wrapper").css({width: x});
     } 
   } 
   var chat = new chatObj();

@@ -12,7 +12,7 @@
 		<b><%= email.subject %></b>
 	</td>
 	<td>
-		<b><%= email.content %></b>
+		<b><%= truncate(email.content, length:70) %></b>
 	</td>	
 	<td>
 	    <b><%= link_to "See Mail", {:controller => "mails", :action => "show_content", :email_id => email.id} %></b>
@@ -32,7 +32,7 @@
 		<%= email.subject %>
 	</td>
 	<td>
-		<%= email.content %>
+		<%= truncate(email.content, length:70) %>
 	</td>
 	<td>
 	    <%= link_to "See Mail", {:controller => "mails", :action => "show_content", :email_id => email.id} %>

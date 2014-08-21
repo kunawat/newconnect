@@ -4,9 +4,9 @@ html {
   position: absolute;
   
 }
-/*
-body {
-   Margin bottom by footer height 
+
+/*body {
+ 
   margin-bottom: 40px;
 }*/
 
@@ -34,7 +34,7 @@ body > .footer {
 
 body > .container {
   padding: 60px 0px 0px 0px;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 
  width: 100%;
 }

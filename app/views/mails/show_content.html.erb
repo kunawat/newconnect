@@ -4,31 +4,43 @@
 		Mail
 	</title>
 	<body>	
-		<div>
+		 <div class="col-md-9 col-md-offset-1" style="margin-top:100px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);">
 			<table class="table table-hover table-condensed" id="t1" style="margin-top:70px; margin-left:50px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">
+				<br>
+				<br>
 				<tr>
 					<% id = params[:email_id] %>
-					<span> From: </span>
+					<span> <b>From: </b></span>&nbsp;&nbsp;&nbsp;&nbsp;
 					<%= Email.find_by_id(id).sender%>
-					<br>
-					<span> To: </span>
+					<br><br>
+					<span><b> To: </b> </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<%= Email.find_by_id(id).recipient%>
-					<br>
-					<span> Subject: </span>
+					<br><br>
+					<span> <b>Subject:</b> </span>&nbsp;
 					<%= Email.find_by_id(id).subject%>
 				</tr>
 				<br>
 				<br>
-				<br>
+				
 				<tr>
-					<div>
+					<div style="word-wrap: break-word;">
+					<b>Content:</b>&nbsp;
+					
 					<%= Email.find_by_id(id).content%>
 					</div>
-				</tr>
+				</tr><br>
+				<br>
+				<tr>
+					<b>Attachment:</b>&nbsp;
+					<% @me = Email.find_by_id(id) %>
+					<a href="<%= @me.attach.url %> ">
+              		<b> File attached </b></a>
+ 				 <br>
+ 				 </tr>
 				<tr>
 					<br>
 					<br>
-					<%= button_to "Delete", {:controller => "mails", :action => "delete_mail", :id => id}%>	
+					<%= button_to "Delete", {:controller => "mails", :action => "delete_mail", :id => id}, class: "btn btn-primary"%>	
 				</tr>
 			</table>
 		</div>

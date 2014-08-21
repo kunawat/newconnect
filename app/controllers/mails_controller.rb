@@ -22,7 +22,7 @@ class MailsController < ApplicationController
 		else	
 		Email.create(:sender => User.find_by_id(session[:user_id]).username, :recipient => hash[:to], :subject => hash[:subject],
 					 :content => hash[:content], :recieved_status => "Unread", :sent_status => 'sent', :sender_id => session[:user_id],
-					 :reciever_id => User.find_by_username(hash[:to]).id)
+					 :reciever_id => User.find_by_username(hash[:to]).id, :attach => hash[:attach])
 		redirect_to :action => 'show_mails', :type => 'inbox'
 		end
 	end

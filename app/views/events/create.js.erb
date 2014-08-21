@@ -1,0 +1,7 @@
+<% if @success %>
+	<% notify_events "/notifications/events" %>
+	FlashNotice("success", "Event created!");
+	location.href = "/calendar/show";
+<%else%>
+	location.href = "/events/new";
+<%end%>

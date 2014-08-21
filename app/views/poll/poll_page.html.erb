@@ -16,15 +16,15 @@
 
 
       <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);">
       <%= form_for(:poll, :url => {:action => "poll_new"}) do |f|  %>
        
-        <h2 class="form-signin-heading">Create Poll </h2>
+        <center><h2 class="form-signin-heading">Create Poll </h2></center>
         <div class="line"> </div>
         <%= f.text_field(:question, :placeholder => "Question", :class => 'form-control')%>
         <br>
         <%= f.date_select(:end_date, :order => [:month, :day, :year], :prompt =>true, :start_year => 2014, :end_year =>2050, :class => 'form-control') %>
-        <h2 class = "form-signin-heading"> Specify Options </h2>
+        <br><br>
         <div class ="line"></div>
         <%= f.text_field(:option1, :placeholder => "Option 1", :class => 'form-control' )%>
          <br>
@@ -36,8 +36,8 @@
         <br>
          <%= f.text_field(:option5, :placeholder => "Option 5", :class => 'form-control' )%>
         <br>
-        <br>
-        <%= submit_tag("Submit Poll", :class => 'btn btn-lg btn-success btn-block') %>
+        <br><center>
+        <%= submit_tag("Submit Poll", :class => 'btn btn-primary') %></center>
       <% end %>
       </div>
       </div>

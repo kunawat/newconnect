@@ -74,23 +74,23 @@ a {
   margin: 0;
 }
 
-ul#chat {
+ul.chat_content {
   list-style: none;
   padding: 0;
   width: 250px;
-  height: 225px;
+  height: 235px;
   border: solid 1px #777;
-  margin: 5px 0;
+ 
   overflow-y: scroll;
   word-wrap: break-word;
 }
 
-ul#chat li {
+ul.chat_content li {
   margin: 2px 5px;
   padding: 0;
 }
 
-ul#chat li .created_at {
+ul.chat_content li .created_at {
   float: right;
   color: #777;
   font-size: 11px;
@@ -98,6 +98,7 @@ ul#chat li .created_at {
   padding-top: 2px;
 }
 
-input#message_content {
+input.message_content {
   width: 200px;
+  height:100%;
 }

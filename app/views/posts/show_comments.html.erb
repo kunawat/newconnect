@@ -1,0 +1,50 @@
+<html>
+	<%= stylesheet_link_tag("application", "bootstrap.min") %>
+	
+	<body>	
+		<div>
+			<%= link_to "", {:controller => "posts", :action => "show_comments", :post_id => @post_id}, :id=> 'commenting', :remote => true %>
+			<table class="table table-hover table-condensed" id="t1" style="margin-left:50px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">
+				<tbody>
+				<span style="font-size:15px">
+					<%= Post.find_by_id(@post_id).content %>
+					<br><br><br>
+				<b><%= "All Comments" %></b>
+				</span>		
+				<div>
+					<table class="table table-hover table-condensed">
+						<tbody id="comments_c">
+							<%= render @comments %>
+						</tbody>
+					</table>
+				</div>
+				<tr>
+				<td>
+				<div style="width:30%">
+				<%= form_for(:comment, :url => {:controller => "posts", :action => "create_comment", :post_id => @post_id}) do |f|  %>
+       
+		        <h3 class="form-signin-heading">Add comment</h3>
+		        <div class="line"> </div>
+		        <%= f.text_area(:content, :placeholder => "Comment", :class => 'form-control', :size =>"5x7")%>
+		        <br>
+		        <br>
+		        <%= submit_tag("Submit Comment", :class => 'btn btn-success btn-block') %>
+		      <% end %>
+		      </div>
+		      </td>
+		      </tr>
+		      </tbody>
+			</table>
+		</div>
+
+
+
+		      <script type='text/javascript'>
+                $(document).ready(function() {
+                  setInterval(function() {
+                          $('#commenting').click();
+                        }, 2000);
+                });
+              </script>	
+	</body>
+</html>

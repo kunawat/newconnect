@@ -12,6 +12,8 @@ def sign_out
 end
 def home_page
 		@users=User.all
+		@posts = Post.order("id DESC").all;
+		@comments = Comment.all;
 		if(session[:user_id]== nil)
 			redirect_to(:controller => "connect", :action => 'login_page')
 		end	

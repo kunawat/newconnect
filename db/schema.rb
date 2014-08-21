@@ -11,9 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140818100208) do
+ActiveRecord::Schema.define(:version => 20140819191652) do
 
   create_table "admin_users", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "chatrooms", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id"
+    t.text     "content"
+    t.string   "created_by"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -42,8 +57,12 @@ ActiveRecord::Schema.define(:version => 20140818100208) do
     t.string   "recieved_status"
     t.integer  "sender_id"
     t.integer  "reciever_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   create_table "events", :force => true do |t|
@@ -89,20 +108,31 @@ ActiveRecord::Schema.define(:version => 20140818100208) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "posts", :force => true do |t|
+    t.text     "content"
+    t.string   "created_by"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "username",        :limit => 16
+    t.string   "username",         :limit => 16
     t.string   "first_name"
     t.string   "last_name"
     t.string   "hashed_password"
     t.string   "linked_in"
     t.date     "date_of_birth"
-    t.string   "gender",          :limit => 10
-    t.text     "about_me",        :limit => 255
-    t.string   "contact_no",      :limit => 10
-    t.string   "email",           :limit => 30
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "gender",           :limit => 10
+    t.text     "about_me",         :limit => 255
+    t.string   "contact_no",       :limit => 10
+    t.string   "email",            :limit => 30
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.boolean  "online"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
 end

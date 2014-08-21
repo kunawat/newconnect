@@ -1,39 +1,36 @@
 <html>
 
-	<%= @page_title= "Profile Page" %>
 
-	<%= link_to("Homepage", controller: "home", action: "home_page")%>
-	<div >
-		<h2>User Details</h2>
+	<div class="col-md-6 col-md-offset-2" style="margin-top:50px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);">
+		<h2>	<%= @user.first_name  %>&nbsp;<%= @user.last_name%></h2>
 
 		</br>
-		<u><h4>Name:</h4></u>
-		<%= @user.first_name  %>
+		<%= image_tag @user.pic.url(:medium) %>
 		
-		<%= @user.last_name%>
 		</br></br>
-		<u><h4>LinkedIn:</h4></u>
+		<b>LinkedIn:</b>
 		<%= @user.linked_in  %>
 		</br></br>
-		<u><h4>Date of Birth:</h4></u>
+		<b>Date of Birth:</b>
 		<%= @user.date_of_birth%>
 		</br></br>
 		</br>
-		<u><h4>Sex:</h4></u>
+		<b>Sex:</b>
 		<%= @user.gender  %>
 		</br></br>
-		<u><h4>Bio:</h4></u>
+		<b>Bio:</b>
 		<%= @user.about_me%>
 		</br></br>
-		<u><h4>Contact No:</h4></u>
+		<b>Contact No:</b>
 		<%= @user.contact_no  %>
 		</br></br>
-		<u><h4>Email Id</h4></u>
+		<b>Email Id</b>
 		<%= @user.email%>
 		</br></br>
 		
+		<% if(@user.id==session[:user_id]) %>
 		<%= link_to("Edit Profile", edit_user_path(@user), :class => 'action edit')%>
-		
+		<%end%>
 			
 
 		

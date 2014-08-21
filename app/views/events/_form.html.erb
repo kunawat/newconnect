@@ -1,28 +1,36 @@
 
 <table summary="Subject form fields">
 		<tr>
-			<th><%=f.label(:name)%></th>
+			<th><%=f.label(:name,"Name:")%></th>
 			<td><%= f.text_field(:name)%></td>
 		</tr>
 		<tr>
+			<th><br></th>
+			<td><br></td>
 		</tr>
 		<tr>
-			<th><%=f.label(:date, "Event Date")%></th>
+		</tr>
+		<tr>
+			<th><%=f.label(:date, "Event Date:")%></th>
 			<td> <%=f.date_select(:date) %></td>
-		</tr>
+		</tr>		<tr></tr>
 		<tr>
+		<th><br></th>
+			<td><br></td>
 </tr>
 		<tr>
-			<th><%=f.label(:time, "Event Time")%></th>
+			<th><%=f.label(:time, "Event Time:")%></th>
 			<td> <%=f.time_select(:time) %></td>
 		</tr>
-		<tr>
+		<tr><th><br></th>
+			<td><br></td>
 </tr>
 		<tr>
-			<th><%=f.label(:descrition)%></th>
+			<th><%=f.label(:descrition,"Description:")%></th>
 			<td> <%=f.text_area(:description,:size=>"40*5") %></td>
 		</tr>
-		<tr>
+		<tr><th><br></th>
+			<td><br></td>
 </tr>
 		
 </table>

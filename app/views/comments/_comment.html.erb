@@ -1,0 +1,15 @@
+                    <tr>
+                      <td>
+                        <span style="font-size:15px;">
+                        <b><%="-"%>
+                        <%= User.find_by_id(comment.created_by).first_name %></b>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <%= comment.content%>
+                      </td>
+                    </tr>
+
+

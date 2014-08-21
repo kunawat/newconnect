@@ -1,14 +1,20 @@
-<h1>Docs List</h1>
+<br>
+<%= link_to 'Add Doc', new_doc_user_path, class: "btn btn-primary" %>
+<br>
+    <div class="col-md-7 col-md-offset-3" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);">  
+<center><h2>Documents</h2></center>
 
 <table align="center" width="100%">
   <tr>
-    <td > 
-      Name
+    <td > <b>
+      Name</b>
     </td>
-    <td > 
-      Email
+    <td > <b>
+      Email</b>
     </td>
   </tr>
+
+   <div class="line"> </div>
 
 
 <% @doc_users.each do |user| %>
@@ -16,7 +22,7 @@
     <td><%= user.name %></td>
     <td><%= user.email %></td>
     <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_doc_user_path(user) %></td>
+
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -24,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Doc user', new_doc_user_path %>
+</div>

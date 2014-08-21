@@ -4,7 +4,20 @@
   background-color: #eee;
 }*/
 
+
+.loginback {
+  background-image: url("slide1.jpg");
+  background-repeat: no-repeat;
+  height: 700px;
+  background-size: 100%,700px;
+  margin-right: -15px;
+  margin-left: -15px;
+  margin-bottom: -15px;
+}
 .row {
+  background-color: #eee;
+
+  background-size: 100%,700px;
   margin-right: 0px;
   margin-left: 0px;
    
@@ -68,7 +81,7 @@ a:active {
 }
 .line {
   border-bottom-style: solid;
-  color: gray;
+  color: #4EB1BA;
   margin-bottom: 25px;
 }
 

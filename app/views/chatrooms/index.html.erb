@@ -1,0 +1,37 @@
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+	   <% title "ChatRoom" %>
+  	<%= stylesheet_link_tag "chatroom"%>
+
+
+</head>
+<body>
+<div class="col-md-10 col-md-offset-1" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);"> 
+   
+   		 
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <center><%= content_tag :h1, yield(:title) if show_title? %></center>
+      <%= yield %>
+  
+       <div class="line"> </div>
+ 
+		<ul id="chat_room">
+		  <%= render @chatrooms %>
+		</ul>
+
+		<%= form_for Chatroom.new, :remote => true do |f| %>
+		  
+		  <%= f.text_field :content %>
+
+		  <%= f.submit "Send" , :class => 'btn btn-primary'%>
+		<% end %>
+  </div>
+
+
+</body>
+</html>

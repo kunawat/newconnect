@@ -3,4 +3,7 @@ class Event < ActiveRecord::Base
     
 	validates_presence_of :name
   	validates_length_of :name, :within => 1..255
+
+  	
+
 end

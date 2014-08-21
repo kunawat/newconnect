@@ -9,71 +9,80 @@
 
     <!-- Custom styles for this template -->
     <%= stylesheet_link_tag "signin" %>
-
+    <%= stylesheet_link_tag "font-awesome.min"%>
   </head>
 
   <body>
-    <div class="row">
-    <div class="col-md-3 col-md-offset-3" style="margin-top:70px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">   
+    <div class="loginback">
+ 
+    <div class="col-md-3 col-md-offset-3" style="margin-top:100px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);">   
       <%= form_for(:user, :url => {:action => "login_attempt"}) do |f|  %>
        
        <table align="center">
          <tr align="center">
-          <td>
-              <h2 class="form-signin-heading">Sign in </h2>
+          <td colspan="2">
+              <h2 class="form-signin-heading">LOGIN </h2>
           </td>   
          </tr>
          <tr align="center">
-           <td>
+           <td colspan="2">
               <div class="line"> </div>
            </td>
         </tr>
         <tr align="center">
-            <td>
+            <td colspan="2">
               <span class="error" align="center" ><%= flash[:msg]  %></span>
             </td>
         </tr>
         <tr>
-          <td>
+          <td colspan="2">
             <br>
           </td>
         </tr>
  
-        <tr align="center">
-          <td>
+        <tr>
+          <td align="left">
+              <i class="fa fa-lock">&nbsp;&nbsp;</i>
+          </td>
+
+          <td align="left">
               <%= f.text_field(:username,  :size =>25, :maxlength=> 25, :placeholder => "Username", :class => 'form-control')%>
           </td>
         </tr>
         <tr>
-        <td>
+        <td colspan="2"> 
           <br>
         </td>
         </tr>
-        <tr align="center">
-          <td>
+        <tr >
+          <td align="left">
+            <i class="fa fa-key">&nbsp;&nbsp;</i>
+          </td>
+          <td align="left">
               <%= f.password_field(:password, :size => 25, :maxlength=>25, :placeholder => "Password", :class => 'form-control' )%>
           </td>
         </tr>
         <tr>
-        <td>
-          <br>
-        </td></tr>
+          <td colspan="2">
+            <br>
+          </td>
+        </tr>
         <tr align="left">
-          <td>
-          <div >
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
+          <td colspan="2">
+            <div >
+              <label>
+               <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
           </td> 
         </tr>
         <tr align="center">
-          <td>
+          <td colspan="2">
             <br>
           </td>
         </tr>
         <tr align="center">
-          <td>
+          <td colspan="2">
           <%= submit_tag("Login", :class => 'btn btn-lg btn-success btn-block', controller: "connect", action: "login_attempt")%>
              <% end %>
           </td>

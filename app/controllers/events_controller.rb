@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
 	before_filter :check
  	
-  	
+  
 	def index
 		redirect_to(:controller=> "calendar",:action => 'show' )
 	end
@@ -21,14 +21,18 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(params[:event])
 		if @event.save
-			
-			flash[:notice]="Event created!!"
-			redirect_to(:controller=> "calendar",:action => 'show' )
+			@m_type = "success"
+			@message = "Event created!"
+			@success = true
 		else
-			
-			render('new')
-		end	
+			@success = false
+			flash[:error]="Event not created!!"
+		end
+		respond_to do |format|
+			format.js
+		end
 	end
+
 	def edit
 		@event = Event.find(params[:id])
 		
@@ -59,13 +63,12 @@ class EventsController < ApplicationController
 	end
 
 	 private
-	 	def check
+ 	def check
    		if(session[:user_id] == nil)
     		redirect_to(:controller => "connect", :action => 'login_page')
     	
       
     	end
-   	
    	end
 
 end

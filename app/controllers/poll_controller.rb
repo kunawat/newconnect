@@ -15,7 +15,7 @@ class PollController < ApplicationController
 	    PollOption.create(:keyword => hash[:option3], :poll_id => @new_poll.id)
 		PollOption.create(:keyword => hash[:option4], :poll_id => @new_poll.id)
 		PollOption.create(:keyword => hash[:option5], :poll_id => @new_poll.id)
-		redirect_to(:controller => "home", :action => 'home_page')
+		render 'view_polls'
 	end	
 
 	def view_result

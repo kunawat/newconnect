@@ -3,29 +3,45 @@
 	<title>
 		Mails
 	</title>
+	
 	<body>	
+	<div class="col-md-12" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);"> 
+   
 		<div>
 			<%= link_to "", { :remote => true, :type => session[:mails_type] }, :id => 'refresh' %>
-			<table class="table table-hover table-condensed" id="t1" >
+			<table class="table table-hover table-condensed" id="t1"  >
 				<tr>
-					<%= button_to "Compose", :action => 'compose' %>
+				<td ><center><h2 style="margin-left:5px" > Mails </h2></center></td>
+					<td width="10%"><h2>	<%= button_to "Compose", {:action => 'compose'}, class: "btn btn-primary" %></h2></td>
+					<td width="7%"><h2><%= button_to( "Inbox",{ :action => 'show_mails', :type => 'inbox', :remote => true} , class: "btn btn-primary") %></h2></td>
+		<!-- 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+			<td width="10%"><h2><%= button_to( "Sent", {:action => 'show_mails', :type => 'sent', :remote => true}, class: "btn btn-primary") %></h2></td>
 				</tr>
 			</table>
 		</div>
 
 
-	<br>
-		<h1 style="margin-left:5px"> Mails </h1>
-		<br>
-		<div>
-			<%= button_to( "Inbox", :action => 'show_mails', :type => 'inbox', :remote => true) %>
-			<%= button_to( "Sent", :action => 'show_mails', :type => 'sent', :remote => true) %>
+ <div class="line"> </div>
+		
+		
+		
+
+			
+			<br>
+			
 			<div id="mails_c">
+			
+   
 				<table class='table table-hover table-condensed' style='margin-left:5px'>
-					<tbody>
-						<%= render(@mails) %>
+
+				
+				<tbody>
+						<tr>
+						<center><%= render(@mails) %></center>
+						</tr>
 					</tbody>
 				</table>
+
 			</div>
 		</div>
 

@@ -3,26 +3,26 @@
 	<%= @page_title= "Event Details" %>
 
 	<%#= link_to"Calendar", {controller: "calendar", action: "show", :class => 'action show'}, class: "btn btn-primary" %>
-	<div >
-		<h2>Event Details</h2>
-
+	 <div class="col-md-6 col-md-offset-3" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);"> 
+		<center><h2>Event Details</h2></center>
+		 <div class="line"> </div>
 		</br>
-		<u><h4>Name</h4></u>
+		<b>Name:</b>
 		<%= @event.name  %>
 		</br></br>
-		<u><h4>Event Date</h4></u>
+		<b>Event Date:</b>
 		<%= @event.date%>
 		</br></br>
-		<u><h4>Event Time</h4></u>
+		<b>Event Time:</b>
 		<%= @event.time  %>
 		</br></br>
-		<u><h4>Event Description</h4></u>
+		<b>Event Description:</b>
 		<%= @event.description%>
 		</br></br>
-		<u><h4>Actions</h4></u>
-		<%= link_to("Edit", {:action=> 'edit', :id => @event.id}, :class => 'action edit')%>
 		
-			<%= link_to("Delete", {:action=> 'delete', :id => @event.id}, :class => 'action delete')%>
+		<%= link_to("Edit", {:action=> 'edit', :id => @event.id})%>
+		
+			<%= link_to("Delete", {:action=> 'delete', :id => @event.id})%>
 		
 		
 

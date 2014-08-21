@@ -1,13 +1,15 @@
-
 <% broadcast "/messages/new/#{@message.receiver_id}" do %>
-
-  $("#chat").append("<%= escape_javascript render(@message) %>");
-  $("#chat").scrollTop($("#chat")[0].scrollHeight);
+  $("#chat_" + "<%=@user.id%>").append("<%= escape_javascript render(@message) %>");
+  $("#chat_" + "<%=@user.id%>").scrollTop($("#chat_" + "<%=@user.id%>")[0].scrollHeight);
 <% end %>
 <% broadcast "/messages/new/#{@user.id}" do %>
-  $("#chat").append("<%= escape_javascript render(@message) %>");
-  $("#chat").scrollTop($("#chat")[0].scrollHeight);
+  $("#chat_" + "<%=@message.receiver_id%>").append("<%= escape_javascript render(@message) %>");
+  $("#chat_" + "<%=@message.receiver_id%>").scrollTop($("#chat_" + "<%=@message.receiver_id%>")[0].scrollHeight);
 <% end %>
-<% notify "/notifications/#{@message.receiver_id}" %>
-
-$("#new_message")[0].reset();
+<% notify "/notifications/#{@message.receiver_id}" do %>
+	FlashNotice("notice", "New message from " + "<%= @user.first_name%>");
+<%end%>
+ var val = $("#new_message_" + "<%=@message.receiver_id%>").value;
+console.log(val);
+$("#new_message_" + "<%=@message.receiver_id%>").val("");
+console.log("asdsada");

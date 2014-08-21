@@ -51,7 +51,7 @@ class DocUsersController < ApplicationController
 
     respond_to do |format|
       if @doc_user.save
-        format.html { redirect_to @doc_user, notice: 'Doc user was successfully created.' }
+        format.html { redirect_to @doc_user, notice: 'Doc was successfully uploaded' }
         format.json { render json: @doc_user, status: :created, location: @doc_user }
       else
         format.html { render action: "new" }

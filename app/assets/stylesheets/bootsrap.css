@@ -1,4 +1,4 @@
-g/*!
+/*!
  * Bootstrap v3.0.3 (http://getbootstrap.com)
  * Copyright 2013 Twitter, Inc.
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
@@ -2268,6 +2268,7 @@ textarea.input-lg {
       -ms-user-select: none;
        -o-user-select: none;
           user-select: none;
+          
 }
 
 .btn:focus {
@@ -4100,8 +4101,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .nav > li > a {
   position: relative;
-  display: block;
-  padding: 10px 15px;
+display: block;
+padding: 10px 15px;
+margin-right: 10px;
+margin-left: 20px;
 }
 
 .nav > li > a:hover,
@@ -4332,9 +4335,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   content: " ";
 }
 
-.navbar:after {
-  clear: both;
-}
 
 .navbar:before,
 .navbar:after {
@@ -4342,9 +4342,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
   content: " ";
 }
 
-.navbar:after {
-  clear: both;
-}
 
 @media (min-width: 768px) {
   .navbar {
@@ -4801,8 +4798,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+  background-color: #fff;
+  border-color: #fff;
 }
 
 .navbar-inverse .navbar-brand {

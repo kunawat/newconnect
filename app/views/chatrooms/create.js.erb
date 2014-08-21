@@ -1,0 +1,5 @@
+<% broadcast "/messages/new" do %>
+  $("#chat_room").append("<%= escape_javascript render(@chatroom) %>");
+   $("#chat_room").scrollTop($("#chat_room")[0].scrollHeight);
+<% end %>
+$("#new_chatroom")[0].reset();

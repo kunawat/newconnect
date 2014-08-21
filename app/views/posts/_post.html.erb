@@ -1,0 +1,20 @@
+            <tr>
+              <td>
+              <span style="font-size:15px">
+              <%="Created By-"%>
+              </span>
+              <span style="font-size:15px;color:green;">
+                <b><%= User.find_by_id(post.created_by).first_name %></b>
+              <td>
+            </tr>
+            <tr>
+              <td>
+                <%= truncate(post.content, length:100) %>
+              </td>
+            </tr>
+            <tr>
+            <td>
+            <%= link_to "View Discussion", {:controller => "posts", :action => "show_comments", :post_id => post.id } %>
+            <br><br>
+            </td>
+            </tr>

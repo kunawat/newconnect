@@ -19,7 +19,7 @@
 
     <div class="container form-signin" style="margin-top:70px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;">   
       <%= form_for(:user, :url => {:action => "create_new_user"}) do |f|  %>
-        <table>
+        <table class="table table-responsive">
             <tr align="center">
             <td>
                 <h2 class="form-signin-heading">Sign in </h2>
@@ -34,6 +34,15 @@
                <td>
                     <span class="error" align="center" ><%= flash[:msg]  %></span>
                     <br>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+            <p>
+                 <b> Profile Pic </b><br/>
+                    <%= f.file_field :pic %>
+            </p>
+            <br>
                 </td>
             </tr>
             <tr align="center">
@@ -93,7 +102,7 @@
             </tr>            
             <tr align="center">
                 <td>
-                    <%= f.text_area(:about_me, :size =>25, :maxlength=> 25, :placeholder => "About me", :class => 'form-control')%>
+                    <%= f.text_area(:about_me, :size =>"3x5", :maxlength=> 25, :placeholder => "About me", :class => 'form-control')%>
                 </td>
                 <br>
             </tr>

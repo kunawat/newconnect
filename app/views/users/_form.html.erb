@@ -1,3 +1,7 @@
+ <p>
+     <b>Change Profile Picture </b><br/>
+     <%= f.file_field :pic %>
+</p>
 <table>
 		<tr>
 			<th>Name:</th>
@@ -20,9 +24,9 @@
                         </b>
                  
                         Male 
-                       <%= f.radio_button(:gender, :class => 'form-control', :value => "Male") %>
+                       <%= f.radio_button(:gender, "Male", :class => 'form-control') %>
                   
-                        Female <%= f.radio_button(:gender, :class => 'form-control', :value => "Female")%>
+                        Female <%= f.radio_button(:gender, "Female", :class => 'form-control')%>
               
                     <br>
                     <br>

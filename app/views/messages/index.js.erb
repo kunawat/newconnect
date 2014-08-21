@@ -18,8 +18,17 @@
 // chatbox.style.right = "0px";
 // chatbox.style.bottom = "10px";
 // chatbox.style.display = "block";
+var new_chat_box = document.createElement('div');
+new_chat_box.id = "chat_tp_" + "<%=@receiver.id%>"
 
+var x= $("#chats_wrapper").children().length;
 
-$("#chatbox").css({ bottom: "10", right: "0", display: "block"})
-$("#chatbox").html("<%= escape_javascript(render('chatbox')) %>")
-$("#chat").scrollTop($("#chat")[0].scrollHeight);
+x=x+1;
+console.log(x);
+x=x*260;
+console.log(x);
+$("#chats_wrapper").css({width: x});
+$("#chats_wrapper").append(new_chat_box);
+$("#chat_tp_"+ "<%=@receiver.id%>").html("<%= escape_javascript(render('chatbox')) %>");
+$("#chat_tp_"+ "<%=@receiver.id%>").css({ bottom: "10", display: "block"});
+$("#chat_" + "<%= @receiver.id%>").scrollTop($("#chat_"+ "<%= @receiver.id%>")[0].scrollHeight);

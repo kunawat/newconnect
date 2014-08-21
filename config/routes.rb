@@ -11,9 +11,14 @@ Connectlls::Application.routes.draw do
   #resource :events
   root to: "calendar#show"
   
+  match "/users/board_members", to: "users#board_members" 
+
   resources :users
   resources :messages
   root :to => 'messages#index'
+
+  resources :chatrooms
+  root :to => 'chatrooms#index'
   
 
   # The priority is based upon order of creation:

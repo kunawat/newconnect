@@ -1,17 +1,22 @@
-<%= link_to"Add New Event", {controller: "events", action: "new", :class => 'action new'}, class: "btn btn-primary"%>
+<br>
+<%= link_to"Add New Event", {controller: "events", action: "new"}, class: "btn btn-primary"%>
+<br>
+<div class="col-md-12" style="margin-top:40px; background:#FFFFFF; box-shadow:0px 0px 10px #666666; border:1px solid #CCCCCC;opacity: 0.8;filter:alpha(opacity=80);"> 
+<br>
 <div class="row ">
   <div class="col-md-12 text-center">
     <div class="well controls">
       <%= link_to calendar_path(date: @date - 1.month), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-backward"></i>
       <% end %>
-      <%= "#{@date.strftime("%B")} #{@date.year}" %>
+      <b><%= "#{@date.strftime("%B")} #{@date.year}" %></b>
       <%= link_to calendar_path(date: @date + 1.month), class: "btn btn-default" do %>
         <i class="glyphicon glyphicon-forward"></i>
       <% end %>
     </div>
   </div>
-</div> 
+</div> <br>
+  <div class="line"> </div>
 <div class="row table table-responsive">
 
 
@@ -33,4 +38,4 @@
     <% end %>
     <% end %>
   </div>
-</div>
+</div></div>

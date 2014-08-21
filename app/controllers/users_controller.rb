@@ -23,6 +23,12 @@ class UsersController < ApplicationController
 		
 	end
 
+	def board_members
+		
+		@members=User.all
+		
+	end
+
 	
 
 end
